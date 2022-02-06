@@ -6,9 +6,68 @@
   background-color: #5181b8;
 }
 
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .search-form input {
   border-radius: 5px;
   border-color: #5181b8;
   width: 350px;
   height: 30px;
+}
+
+.search-form button {
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border-color: #5181b8;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-loading {
+  margin-top: 20px;
+}
+
+.load-more {
+  background-color: #5181b8;
+  color: #fff;
+  border-color: #5181b8;
+  width: 150px;
+  height: 50px;
+  border-radius: 5px;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.photo-card {
+  margin: 40px;
+  box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.img_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 320px;
+  height: 280px;
 }
