@@ -61,27 +61,24 @@ function onLoadMoreBtn() {
   if (!getPixabayAPI.searchQuery) {
     return;
   }
+
   getPixabayAPI.getImage().then(response => {
     counterOfTotalPages += response.hits.length;
 
-    setTimeout(() => {
-      notVisibleBtn();
-      renderMarkup(response.hits);
-      loadMore.style.display = 'block';
-
-      const lightbox = new SimpleLightbox('.gallery a', {
-        captionDelay: 250,
-        captionPosition: 'bottom',
-        captionClass: 'center',
-      });
-
-      lightbox.refresh();
-    }, 500);
-
-    if (counterOfTotalPages >= response.totalHits) {
+    if ((counterOfTotalPages > response.totalHits) & (counterOfTotalPages = response.totalHits)) {
       Notify.warning("We're sorry, but you've reached the end of search results.");
       notVisibleBtn();
     }
+
+    notVisibleBtn();
+    renderMarkup(response.hits);
+    loadMore.style.display = 'block';
+
+    const lightbox = new SimpleLightbox('.gallery a', {
+      captionDelay: 250,
+      captionPosition: 'bottom',
+      captionClass: 'center',
+    });
   });
 }
 
