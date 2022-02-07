@@ -9,6 +9,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 const searchForm = document.querySelector('.search-form');
 const loadMore = document.querySelector('.load-more');
 const gallery = document.querySelector('.gallery');
+const loadingBtn = document.querySelector('.loading-button');
 
 let counterOfTotalPages = 1;
 notVisibleBtn();
@@ -31,10 +32,10 @@ function onSearchForm(e) {
   }
 
   getPixabayAPI.getImage().then(response => {
-    // console.log(response.totalHits);
+    console.log(response.totalHits);
 
     if (response.totalHits > 0) {
-      Notify.success(`Hooray! We found totalHits images.`);
+      Notify.success(`Hooray! We found totalHits ${response.totalHits} images.`);
     }
 
     counterOfTotalPages += response.hits.length - 1;
@@ -65,9 +66,9 @@ function onLoadMoreBtn() {
   getPixabayAPI.getImage().then(response => {
     counterOfTotalPages += response.hits.length;
 
-    if ((counterOfTotalPages > response.totalHits) & (counterOfTotalPages = response.totalHits)) {
+    if (counterOfTotalPages >= response.totalHits) {
+      loadingBtn.style.display = 'none';
       Notify.warning("We're sorry, but you've reached the end of search results.");
-      notVisibleBtn();
     }
 
     notVisibleBtn();
